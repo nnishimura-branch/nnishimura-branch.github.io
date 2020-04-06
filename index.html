@@ -63,6 +63,14 @@
                 }
             });
 
+            branch.logEvent(
+			  "COMPLETE_REGISTRATION",
+			  { metadata: 'Monster1' },
+			  event_and_custom_data,
+			  content_items,
+			  function(err) { console.log("Registration Complete"); }
+			);
+
 		    branch.logEvent(
 			  "VIEW_ITEM",
 			  { metadata: 'Monster1' },
@@ -122,10 +130,12 @@
 		    </div>
 		</nav>
 		
-		<div style="padding-top: 20px">
+		<div style="padding-top: 100px">
 		  <h2 class="display-4">About</h2>
 		  <p class="lead"><a href="about.html" title="About">Click here to redirect to the About Page.</a></p>
           <a id='generatedLink' href="https://www.google.com">Link</a>
+          <br>
+          <a href="#" onclick=".logEvent(COMPLETE_REGISTRATION)">Complete Registration</a>
           <br>
           <a href="#" onclick=".logEvent(VIEW_ITEM)">View Item</a>
           <br>
