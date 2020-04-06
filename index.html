@@ -8,11 +8,32 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
- 
+ 		
+ 		<!-- CSS -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/media-queries.css">
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-3.2.1.min.js"></script>
+        <script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/waypoints.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+
         <title>Nicole WebSDK</title>
 
-        <script>
-		    // load Branch
+        <!-- // load Branch -->
+        <script type="text/javascript">
+		    
 		    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
 		    // init Branch
 		    branch.init('key_live_oeMSSOITISlkswEsvEMD2blmtviAyp4a',
@@ -24,6 +45,23 @@
 		                'page' : 'index',
 		        }
 		    });
+
+		    var linkData = {
+                "feature": "Email",
+                "channel": 'channel',
+                "data": {
+                }
+            };
+
+    		branch.link(linkData, function(err, link) {
+                if (err == null) {
+                    console.log(link);
+                    var sdkLink = document.getElementById('generated3PLink');
+                    sdkLink.href = link;
+                } else {
+                    console.log(err);
+                }
+            });
 
 		    branch.logEvent(
 			  "VIEW_ITEM",
@@ -50,25 +88,19 @@
 	    <meta name="branch:deeplink:face_index" content="2"/>
 	    <meta name="branch:deeplink:body_index" content="2">
 	    <meta name="branch:deeplink:color_index" content="2">
-
-	
  
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/media-queries.css">
+    </head>
  
-        <!-- Favicon and touch icons -->
+    <body>
+    	<!-- Favicon and touch icons -->
         <link rel="shortcut icon" href="assets/ico/favicon.png">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-		<nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
+		
+
+    	<nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
 		    <div class="container">
 		        <a class="navbar-brand" href="index.html">Nicole WebSDK Test</a>
 		        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,9 +108,6 @@
 		        </button>
 		        <div class="collapse navbar-collapse" id="navbarNav">
 		            <ul class="navbar-nav ml-auto">
-		                <li class="nav-item">
-		                    <a class="nav-link scroll-link" href="#top-content">Top</a>
-		                </li>
 		                <li class="nav-item">
 		                    <a class="nav-link scroll-link" href="#home">Home</a>
 		                </li>
@@ -92,21 +121,96 @@
 		        </div>
 		    </div>
 		</nav>
-    </head>
- 
-    <body>
 
-    	<!-- Javascript -->
-        <script src="assets/js/jquery-3.2.1.min.js"></script>
-        <script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/retina-1.1.0.min.js"></script>
-        <script src="assets/js/waypoints.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
- 
+		  <p class="lead"><a href="about.html" title="About">Click here to redirect to the About Page.</a></p>
+          <a id='generated3PLink' href="https://www.google.com">Stamp Link</a>
+          <a href="#" onclick=".logEvent(VIEW_ITEM)">View Item</a>
+          <br>
+          <div id='setIdentity' onClick="identityCheck()">setIdentity</div>
+        </div>
+
+   
+ 	<!-- Branch javascript -->
+    <script>
+
+    function identityCheck() {
+        const testId = '123Nicole';
+        branch.setIdentity(testId);
+        document.getElementById('setIdentity').innerText = testId;
+        branch.logEvent('pageview',{id:testId})
+    }
+    
+    // Branch listener object that retrieves banner link data and prints it to console
+    var listener = function(event, data) {
+        console.log(event + ' fired at ' + Math.floor(Date.now() / 1000));
+        console.log(data);
+    };
+
+
+    // Listener objects are activated in the Branch instance for specific events via .addListener
+    branch.addListener("willShowJourney", listener);
+    branch.addListener("didShowJourney", listener);
+    branch.addListener("willNotShowJourney", listener);
+    branch.addListener("didClickJourneyCTA", listener);
+    branch.addListener("didClickJourneyClose", listener);
+    branch.addListener("willCloseJourney", listener);
+    branch.addListener("didCloseJourney", listener);
+    branch.addListener("didCallJourneyClose", listener);
+    
+
+    // function to manually launch journey and change banner link data (will NOT launch if banner's dismissal period active)
+    function launchBranchJourney(){
+        var linkData = {
+            campaign: 'campaign cannot be changed',
+            feature: 'feature cannot be changed',
+            channel: 'channel was changed by javascript',
+            stage: 'stage was changed by javascript',
+            tags: ['tag was changed by javascript'],
+            data: {
+                'custom_bool': true,
+                'custom_int (today\s date)': Date.now(),
+                'custom_string (url)': window.location.href,
+                '$journeys_icon_image_url':'http://lorempixel.com/400/400',
+                '$journeys_button_get_no_app':'changed!',
+                '$journeys_button_get_has_app':'changed!',
+                '$journeys_description':'Description reset by button click'
+            }
+        };
+        branch.setBranchViewData(linkData);
+        //function to launch journey with flags to disable banner animations
+        branch.track('pageview',{},{'disable_entry_animation':true,'disable_exit_animation':true});
+    }
+
+    //function to check if a banner is displaying
+    function doesJourneyExistOnPage() {
+        var elem = document.getElementById("branch-banner-iframe");
+        if (elem) {
+            return true;
+        }
+        return false;
+    }
+
+    // function for button to close journey (will NOT activate template's dismissal period)
+    function closeBranchJourney(){        
+        if(doesJourneyExistOnPage()){
+            //this is the call that closes the journey, with flags that disable the banner animations
+            console.log("closeBranchJourney called");
+            branch.closeJourney(function(err) {});
+        } else {
+            console.log("No Banner on the page");
+        }
+    }
+
+    // function to test deepview function
+    function dataCallback(){
+        console.log(".data() called");
+        branch.data(function(err, data) {
+            console.log(data);
+        });
+    }
+
+    </script>
+
     </body>
  
 </html>
