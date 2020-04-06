@@ -56,7 +56,7 @@
     		branch.link(linkData, function(err, link) {
                 if (err == null) {
                     console.log(link);
-                    var sdkLink = document.getElementById('generated3PLink');
+                    var sdkLink = document.getElementById('generatedLink');
                     sdkLink.href = link;
                 } else {
                     console.log(err);
@@ -123,7 +123,7 @@
 		</nav>
 
 		  <p class="lead"><a href="about.html" title="About">Click here to redirect to the About Page.</a></p>
-          <a id='generated3PLink' href="https://www.google.com">Stamp Link</a>
+          <a id='generatedLink' href="https://www.google.com">Link</a>
           <a href="#" onclick=".logEvent(VIEW_ITEM)">View Item</a>
           <br>
           <div id='setIdentity' onClick="identityCheck()">setIdentity</div>
